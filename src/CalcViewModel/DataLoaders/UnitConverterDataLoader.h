@@ -36,7 +36,7 @@ namespace CalculatorApp
         {
             CalculatorApp::Common::ViewMode categoryId;
             int unitId;
-            double factor;
+            RAT factor;
         };
 
         struct ExplicitUnitConversionData : UnitConversionManager::ConversionData

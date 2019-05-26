@@ -785,7 +785,7 @@ PRAT rat_length_jumbojet = nullptr;
 PRAT rat_speed_kilometersperhour = nullptr;
 PRAT rat_energy_electronvolt = nullptr;
 PRAT rat_0_000000001 = nullptr;
-PRAT rat_0_000000125 = nullptr;
+PRAT rat_data_bit = nullptr;
 PRAT rat_0_000001 = nullptr;
 PRAT rat_0_000002 = nullptr;
 PRAT rat_0_00001 = nullptr;
@@ -859,7 +859,7 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
     INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_length_jumbojet, 76);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_125, 1, 8);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000125, 1, 8000);
-    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000000125, 1, 8000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_data_bit, 1, 8000000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000000001, 1, 100000000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000002, 2, 100000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000001, 1, 100000);

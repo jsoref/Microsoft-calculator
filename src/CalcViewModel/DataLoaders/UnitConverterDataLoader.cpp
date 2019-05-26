@@ -784,7 +784,7 @@ PRAT rat_length_hand = nullptr;
 PRAT rat_length_jumbojet = nullptr;
 PRAT rat_speed_kilometersperhour = nullptr;
 PRAT rat_energy_electronvolt = nullptr;
-PRAT rat_0_000000001 = nullptr;
+PRAT rat_length_nanometer = nullptr;
 PRAT rat_data_bit = nullptr;
 PRAT rat_0_000001 = nullptr;
 PRAT rat_0_000002 = nullptr;
@@ -860,7 +860,7 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_125, 1, 8);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000125, 1, 8000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_data_bit, 1, 8000000);
-    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000000001, 1, 100000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_nanometer, 1, 100000000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000002, 2, 100000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000001, 1, 100000);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_00001, 1, 10000);
@@ -942,7 +942,7 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Length, UnitConverterUnits::Length_Mile, rat_length_mile },
                                                    { ViewMode::Length, UnitConverterUnits::Length_Micron, rat_0_000001 },
                                                    { ViewMode::Length, UnitConverterUnits::Length_Millimeter, rat_0_001 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Nanometer, rat_0_000000001 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Nanometer, rat_length_nanometer },
                                                    { ViewMode::Length, UnitConverterUnits::Length_Centimeter, rat_0_01 },
                                                    { ViewMode::Length, UnitConverterUnits::Length_Meter, rat_one },
                                                    { ViewMode::Length, UnitConverterUnits::Length_Kilometer, rat_1000 },

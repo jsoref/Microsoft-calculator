@@ -940,13 +940,13 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
     {
         if (categoryToUnitConversionMap.find(unitdata.categoryId) == categoryToUnitConversionMap.end())
         {
-            unordered_map<int, double> conversionData;
-            conversionData.insert(pair<int, double>(unitdata.unitId, unitdata.factor));
-            categoryToUnitConversionMap.insert(pair<ViewMode, unordered_map<int, double>>(unitdata.categoryId, conversionData));
+            unordered_map<int, PRAT> conversionData;
+            conversionData.insert(pair<int, PRAT>(unitdata.unitId, unitdata.factor));
+            categoryToUnitConversionMap.insert(pair<ViewMode, unordered_map<int, PRAT>>(unitdata.categoryId, conversionData));
         }
         else
         {
-            categoryToUnitConversionMap.at(unitdata.categoryId).insert(pair<int, double>(unitdata.unitId, unitdata.factor));
+            categoryToUnitConversionMap.at(unitdata.categoryId).insert(pair<int, PRAT>(unitdata.unitId, unitdata.factor));
         }
     }
 }

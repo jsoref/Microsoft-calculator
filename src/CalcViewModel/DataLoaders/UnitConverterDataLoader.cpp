@@ -871,21 +871,21 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_1, 1, 10);
     INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_9, 9, 10);
     /*categoryId, UnitId, factor*/
-    static const vector<UnitData> unitDataList = { { ViewMode::Area, UnitConverterUnits::Area_Acre, 4046.8564224 },
+    static const vector<UnitData> unitDataList = { { ViewMode::Area, UnitConverterUnits::Area_Acre, rat_area_acre },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareMeter, rat_one },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareFoot, rat_0_09290304 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareYard, rat_0_83612736 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareMillimeter, rat_0_000001 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareCentimeter, rat_0_0001 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareInch, rat_area_squareinch },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMile, 2589988.110336 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMile, rat_area_squaremile },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareKilometer, rat_1000000 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_Hectare, rat_10000 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_Hand, rat_0_012516104 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_Paper, rat_0_06032246 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SoccerField, 10869.66 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SoccerField, rat_area_soccerfield },
                                                    { ViewMode::Area, UnitConverterUnits::Area_Castle, rat_100000 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_Pyeong, 400.0 / 121.0 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_Pyeong, rat_area_pyeong / 121.0 },
 
                                                    { ViewMode::Data, UnitConverterUnits::Data_Bit, rat_0_000000125 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Byte, rat_0_000001 },

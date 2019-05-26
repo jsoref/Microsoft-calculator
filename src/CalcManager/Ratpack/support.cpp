@@ -172,7 +172,7 @@ void ChangeConstants(uint32_t radix, int32_t precision)
         INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_max_exp, 100000);
 
         // 3248, is the max number for which calc is able to compute factorial, after that it is unable to compute due to overflow.
-        // Hence restricted factorial range as at most 3248.Beyond that calc will throw overflow error immediately.
+        // Hence restricted factorial range as at most 3248. Beyond that calc will throw overflow error immediately.
         INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_max_fact, 3249);
 
         // -1000, is the min number for which calc is able to compute factorial, after that it takes too long to compute.

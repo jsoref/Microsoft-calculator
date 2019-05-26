@@ -769,37 +769,136 @@ void UnitConverterDataLoader::GetUnits(_In_ unordered_map<ViewMode, vector<Order
     unitMap.emplace(ViewMode::Angle, angleUnits);
 }
 
+PRAT rat_pressure_bar = nullptr;
+PRAT rat_pressure_pascal = nullptr;
+PRAT rat_pressure_kilopascal = nullptr;
+PRAT rat_pressure_psi = nullptr;
+PRAT rat_power_horsepower = nullptr;
+PRAT rat_power_horse = nullptr;
+PRAT rat_length_inch = nullptr;
+PRAT rat_length_yard = nullptr;
+PRAT rat_length_mile = nullptr;
+PRAT rat_length_nauticalmile = nullptr;
+PRAT rat_length_paperclip = nullptr;
+PRAT rat_length_hand = nullptr;
+PRAT rat_length_jumbojet = nullptr;
+PRAT rat_speed_kilometersperhour = nullptr;
+PRAT rat_energy_electronvolt = nullptr;
+PRAT rat_0_000000001 = nullptr;
+PRAT rat_0_000000125 = nullptr;
+PRAT rat_0_000001 = nullptr;
+PRAT rat_0_000002 = nullptr;
+PRAT rat_0_00001 = nullptr;
+PRAT rat_0_0001 = nullptr;
+PRAT rat_0_000125 = nullptr;
+PRAT rat_0_000128 = nullptr;
+PRAT rat_0_0002 = nullptr;
+PRAT rat_area_squareinch = nullptr;
+PRAT rat_0_001 = nullptr;
+PRAT rat_0_001024 = nullptr;
+PRAT rat_pressure_millimeterofmercury = nullptr;
+PRAT rat_0_0098692326671601 = nullptr;
+PRAT rat_0_01 = nullptr;
+PRAT rat_0_012516104 = nullptr;
+PRAT rat_0_0225969658055233 = nullptr;
+PRAT rat_0_028349523125 = nullptr;
+PRAT rat_0_035052 = nullptr;
+PRAT rat_0_06032246 = nullptr;
+PRAT rat_0_068045961016531 = nullptr;
+PRAT rat_0_09290304 = nullptr;
+PRAT rat_0_1 = nullptr;
+PRAT rat_0_125 = nullptr;
+PRAT rat_0_131072 = nullptr;
+PRAT rat_0_18669 = nullptr;
+PRAT rat_0_3048 = nullptr;
+PRAT rat_0_4325 = nullptr;
+PRAT rat_0_45359237 = nullptr;
+PRAT rat_0_83612736 = nullptr;
+PRAT rat_0_9 = nullptr;
+PRAT rat_0_9144 = nullptr;
+PRAT rat_100 = nullptr;
+PRAT rat_1000 = nullptr;
+PRAT rat_10000 = nullptr;
+PRAT rat_100000 = nullptr;
+PRAT rat_1000000 = nullptr;
+PRAT rat_60 = nullptr;
+PRAT rat_one = nullptr;
+
+INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat, num, div) \
+    if (rat == nullptr)            \
+    {                              \
+        createrat(rat);            \
+        DUPNUM(rat_half->pp, num); \
+        DUPNUM(rat_half->pq, div); \
+        DUMPRAWRAT(rat);           \
+    }
+
 void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, unordered_map<int, double>>& categoryToUnitConversionMap)
 {
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_60, 60);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_100, 100);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_1000, 1000);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_10000, 10000);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_100000, 100000);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_1000000, 1000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_pressure_bar, 100000, 101325);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_pressure_pascal, 1, 101325);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_pressure_kilopascal, 1000, 101325);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_power_horsepower, 74569987158227022, 100000000000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_power_horse, 7457, 10);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_pressure_millimeterofmercury, 1, 760);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_pressure_psi, 10000, 146956);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_inch, 254, 10000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_foot, 3048, 10000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_yard, 9144, 10000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_mile, 1609344, 1000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_nauticalmile, 1852, 1);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_paperclip, 35052, 1000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_length_hand, 18669, 100000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_speed_kilometersperhour, 250, 9);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_length_jumbojet, 76);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_125, 1, 8);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000125, 1, 8000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000000125, 1, 8000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000000001, 1, 100000000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000002, 2, 100000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_000001, 1, 100000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_00001, 1, 10000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_0002, 2, 10000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_0001, 1, 10000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_001, 1, 1000);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_01, 1, 100);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_1, 1, 10);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_0_9, 9, 10);
     /*categoryId, UnitId, factor*/
     static const vector<UnitData> unitDataList = { { ViewMode::Area, UnitConverterUnits::Area_Acre, 4046.8564224 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMeter, 1 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareFoot, 0.09290304 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareYard, 0.83612736 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMillimeter, 0.000001 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareCentimeter, 0.0001 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareInch, 0.00064516 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMeter, rat_one },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareFoot, rat_0_09290304 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareYard, rat_0_83612736 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMillimeter, rat_0_000001 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareCentimeter, rat_0_0001 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareInch, rat_area_squareinch },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareMile, 2589988.110336 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareKilometer, 1000000 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_Hectare, 10000 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_Hand, 0.012516104 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_Paper, 0.06032246 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareKilometer, rat_1000000 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_Hectare, rat_10000 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_Hand, rat_0_012516104 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_Paper, rat_0_06032246 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SoccerField, 10869.66 },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_Castle, 100000 },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_Castle, rat_100000 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_Pyeong, 400.0 / 121.0 },
 
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Bit, 0.000000125 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Byte, 0.000001 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Kilobyte, 0.001 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Megabyte, 1 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Gigabyte, 1000 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Terabyte, 1000000 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Bit, rat_0_000000125 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Byte, rat_0_000001 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Kilobyte, rat_0_001 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Megabyte, rat_one },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Gigabyte, rat_1000 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Terabyte, rat_1000000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Petabyte, 1000000000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Exabytes, 1000000000000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Zetabytes, 1000000000000000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Yottabyte, 1000000000000000000 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Kilobit, 0.000125 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Megabit, 0.125 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Kilobit, rat_0_000125 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Megabit, rat_0_125 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Gigabit, 125 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Terabit, 125000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Petabit, 125000000 },
@@ -808,9 +907,9 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Data, UnitConverterUnits::Data_Yottabit, 125000000000000000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Gibibits, 134.217728 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Gibibytes, 1073.741824 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Kibibits, 0.000128 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Kibibytes, 0.001024 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Mebibits, 0.131072 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Kibibits, rat_0_000128 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Kibibytes, rat_0_001024 },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Mebibits, rat_0_131072 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Mebibytes, 1.048576 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Pebibits, 140737488.355328 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Pebibytes, 1125899906.842624 },
@@ -829,45 +928,45 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_Calorie, 4.184 },
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_Kilocalorie, 4184 },
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_BritishThermalUnit, 1055.056 },
-                                                   { ViewMode::Energy, UnitConverterUnits::Energy_Kilojoule, 1000 },
-                                                   { ViewMode::Energy, UnitConverterUnits::Energy_ElectronVolt, 0.0000000000000000001602176565 },
-                                                   { ViewMode::Energy, UnitConverterUnits::Energy_Joule, 1 },
+                                                   { ViewMode::Energy, UnitConverterUnits::Energy_Kilojoule, rat_1000 },
+                                                   { ViewMode::Energy, UnitConverterUnits::Energy_ElectronVolt, rat_energy_electronvolt },
+                                                   { ViewMode::Energy, UnitConverterUnits::Energy_Joule, rat_one },
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_FootPound, 1.3558179483314 },
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_Battery, 9000 },
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_Banana, 439614 },
                                                    { ViewMode::Energy, UnitConverterUnits::Energy_SliceOfCake, 1046700 },
 
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Inch, 0.0254 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Foot, 0.3048 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Yard, 0.9144 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Mile, 1609.344 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Micron, 0.000001 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Millimeter, 0.001 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Nanometer, 0.000000001 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Centimeter, 0.01 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Meter, 1 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Kilometer, 1000 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_NauticalMile, 1852 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Paperclip, 0.035052 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_Hand, 0.18669 },
-                                                   { ViewMode::Length, UnitConverterUnits::Length_JumboJet, 76 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Inch, rat_length_inch },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Foot, rat_foot },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Yard, rat_length_yard },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Mile, rat_length_mile },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Micron, rat_0_000001 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Millimeter, rat_0_001 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Nanometer, rat_0_000000001 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Centimeter, rat_0_01 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Meter, rat_one },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Kilometer, rat_1000 },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_NauticalMile, rat_length_nauticalmile },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Paperclip, rat_length_paperclip },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_Hand, rat_length_hand },
+                                                   { ViewMode::Length, UnitConverterUnits::Length_JumboJet, rat_length_jumbojet },
 
                                                    { ViewMode::Power, UnitConverterUnits::Power_BritishThermalUnitPerMinute, 17.58426666666667 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_FootPoundPerMinute, 0.0225969658055233 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_Watt, 1 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_Kilowatt, 1000 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_Horsepower, 745.69987158227022 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_LightBulb, 60 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_Horse, 745.7 },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_FootPoundPerMinute, rat_0_0225969658055233 },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_Watt, rat_one },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_Kilowatt, rat_1000 },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_Horsepower, rat_power_horsepower },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_LightBulb, rat_60 },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_Horse, rat_power_horse },
                                                    { ViewMode::Power, UnitConverterUnits::Power_TrainEngine, 2982799.486329081 },
 
                                                    { ViewMode::Time, UnitConverterUnits::Time_Day, 86400 },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Second, 1 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Second, rat_one },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Week, 604800 },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Year, 31557600 },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Millisecond, 0.001 },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Microsecond, 0.000001 },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Minute, 60 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Millisecond, rat_0_001 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Microsecond, rat_0_000001 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Minute, rat_60 },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Hour, 3600 },
 
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_CupUS, 236.588237 },
@@ -877,13 +976,13 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_QuartUK, 1136.5225 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_GallonUS, 3785.411784 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_GallonUK, 4546.09 },
-                                                   { ViewMode::Volume, UnitConverterUnits::Volume_Liter, 1000 },
+                                                   { ViewMode::Volume, UnitConverterUnits::Volume_Liter, rat_1000 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_TeaspoonUS, 4.92892159375 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_TablespoonUS, 14.78676478125 },
-                                                   { ViewMode::Volume, UnitConverterUnits::Volume_CubicCentimeter, 1 },
+                                                   { ViewMode::Volume, UnitConverterUnits::Volume_CubicCentimeter, rat_one },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_CubicYard, 764554.857984 },
-                                                   { ViewMode::Volume, UnitConverterUnits::Volume_CubicMeter, 1000000 },
-                                                   { ViewMode::Volume, UnitConverterUnits::Volume_Milliliter, 1 },
+                                                   { ViewMode::Volume, UnitConverterUnits::Volume_CubicMeter, rat_1000000 },
+                                                   { ViewMode::Volume, UnitConverterUnits::Volume_Milliliter, rat_one },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_CubicInch, 16.387064 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_CubicFoot, 28316.846592 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_FluidOunceUS, 29.5735295625 },
@@ -894,46 +993,46 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_Bathtub, 378541.2 },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_SwimmingPool, 3750000000 },
 
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Kilogram, 1 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Hectogram, 0.1 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Decagram, 0.01 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Gram, 0.001 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Pound, 0.45359237 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Ounce, 0.028349523125 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Milligram, 0.000001 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Centigram, 0.00001 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Decigram, 0.0001 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Kilogram, rat_one },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Hectogram, rat_0_1 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Decagram, rat_0_01 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Gram, rat_0_001 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Pound, rat_0_45359237 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Ounce, rat_0_028349523125 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Milligram, rat_0_000001 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Centigram, rat_0_00001 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Decigram, rat_0_0001 },
                                                    { ViewMode::Weight, UnitConverterUnits::Weight_LongTon, 1016.0469088 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Tonne, 1000 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Tonne, rat_1000 },
                                                    { ViewMode::Weight, UnitConverterUnits::Weight_Stone, 6.35029318 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Carat, 0.0002 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Carat, rat_0_0002 },
                                                    { ViewMode::Weight, UnitConverterUnits::Weight_ShortTon, 907.18474 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Snowflake, 0.000002 },
-                                                   { ViewMode::Weight, UnitConverterUnits::Weight_SoccerBall, 0.4325 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_Snowflake, rat_0_000002 },
+                                                   { ViewMode::Weight, UnitConverterUnits::Weight_SoccerBall, rat_0_4325 },
                                                    { ViewMode::Weight, UnitConverterUnits::Weight_Elephant, 4000 },
                                                    { ViewMode::Weight, UnitConverterUnits::Weight_Whale, 90000 },
 
-                                                   { ViewMode::Speed, UnitConverterUnits::Speed_CentimetersPerSecond, 1 },
+                                                   { ViewMode::Speed, UnitConverterUnits::Speed_CentimetersPerSecond, rat_one },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_FeetPerSecond, 30.48 },
-                                                   { ViewMode::Speed, UnitConverterUnits::Speed_KilometersPerHour, 27.777777777777777777778 },
+                                                   { ViewMode::Speed, UnitConverterUnits::Speed_KilometersPerHour, rat_speed_kilometersperhour },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_Knot, 51.44 },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_Mach, 34030 },
-                                                   { ViewMode::Speed, UnitConverterUnits::Speed_MetersPerSecond, 100 },
+                                                   { ViewMode::Speed, UnitConverterUnits::Speed_MetersPerSecond, rat_100 },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_MilesPerHour, 44.7 },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_Turtle, 8.94 },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_Horse, 2011.5 },
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_Jet, 24585 },
 
-                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Degree, 1 },
+                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Degree, rat_one },
                                                    { ViewMode::Angle, UnitConverterUnits::Angle_Radian, 57.29577951308233 },
-                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Gradian, 0.9 },
+                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Gradian, rat_0_9 },
 
-                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_Atmosphere, 1 },
-                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_Bar, 0.9869232667160128 },
-                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_KiloPascal, 0.0098692326671601 },
-                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_MillimeterOfMercury, 0.0013155687145324 },
-                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_Pascal, 9.869232667160128e-6 },
-                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_PSI, 0.068045961016531 } };
+                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_Atmosphere, rat_one },
+                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_Bar, rat_pressure_bar },
+                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_KiloPascal, rat_pressure_kilopascal },
+                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_MillimeterOfMercury, rat_pressure_millimeterofmercury },
+                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_Pascal, rat_pressure_pascal },
+                                                   { ViewMode::Pressure, UnitConverterUnits::Pressure_PSI, rat_pressure_psi } };
 
     // Populate the hash map and return;
     for (UnitData unitdata : unitDataList)

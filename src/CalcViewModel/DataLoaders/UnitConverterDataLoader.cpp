@@ -795,7 +795,6 @@ PRAT rat_area_squareinch = nullptr;
 PRAT rat_area_squaremile = nullptr;
 PRAT rat_area_squareyard = nullptr;
 PRAT rat_data_bit = nullptr;
-PRAT rat_data_byte = nullptr;
 PRAT rat_data_cd = nullptr;
 PRAT rat_data_dvd = nullptr;
 PRAT rat_data_exabits = nullptr;
@@ -959,7 +958,7 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Area, UnitConverterUnits::Area_Pyeong, rat_area_pyeong },
 
                                                    { ViewMode::Data, UnitConverterUnits::Data_Bit, rat_data_bit },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Byte, rat_data_byte },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Byte, rat_0_000001 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Kilobyte, rat_data_kilobyte },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Megabyte, rat_one },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Gigabyte, rat_1000 },

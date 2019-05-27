@@ -793,7 +793,6 @@ PRAT rat_area_soccerfield = nullptr;
 PRAT rat_area_squarefoot = nullptr;
 PRAT rat_area_squareinch = nullptr;
 PRAT rat_area_squaremile = nullptr;
-PRAT rat_area_squaremillimeter = nullptr;
 PRAT rat_area_squareyard = nullptr;
 PRAT rat_data_bit = nullptr;
 PRAT rat_data_byte = nullptr;
@@ -947,7 +946,7 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareMeter, rat_one },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareFoot, rat_area_squarefoot },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareYard, rat_area_squareyard },
-                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMillimeter, rat_area_squaremillimeter },
+                                                   { ViewMode::Area, UnitConverterUnits::Area_SquareMillimeter, rat_0_000001 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareCentimeter, rat_0_0001 },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareInch, rat_area_squareinch },
                                                    { ViewMode::Area, UnitConverterUnits::Area_SquareMile, rat_area_squaremile },

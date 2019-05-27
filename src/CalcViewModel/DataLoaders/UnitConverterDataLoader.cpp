@@ -951,14 +951,14 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Length, UnitConverterUnits::Length_Hand, rat_length_hand },
                                                    { ViewMode::Length, UnitConverterUnits::Length_JumboJet, rat_length_jumbojet },
 
-                                                   { ViewMode::Power, UnitConverterUnits::Power_BritishThermalUnitPerMinute, 17.58426666666667 },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_FootPoundPerMinute, rat_0_0225969658055233 },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_BritishThermalUnitPerMinute, rat_power_britishthermalunitperminute },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_FootPoundPerMinute, rat_power_footpoundperminute },
                                                    { ViewMode::Power, UnitConverterUnits::Power_Watt, rat_one },
                                                    { ViewMode::Power, UnitConverterUnits::Power_Kilowatt, rat_1000 },
                                                    { ViewMode::Power, UnitConverterUnits::Power_Horsepower, rat_power_horsepower },
                                                    { ViewMode::Power, UnitConverterUnits::Power_LightBulb, rat_60 },
                                                    { ViewMode::Power, UnitConverterUnits::Power_Horse, rat_power_horse },
-                                                   { ViewMode::Power, UnitConverterUnits::Power_TrainEngine, 2982799.486329081 },
+                                                   { ViewMode::Power, UnitConverterUnits::Power_TrainEngine, rat_power_trainengine },
 
                                                    { ViewMode::Time, UnitConverterUnits::Time_Day, rat_time_day },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Second, rat_one },

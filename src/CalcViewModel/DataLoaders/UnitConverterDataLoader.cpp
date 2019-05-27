@@ -1024,8 +1024,8 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Speed, UnitConverterUnits::Speed_Jet, rat_speed_jet },
 
                                                    { ViewMode::Angle, UnitConverterUnits::Angle_Degree, rat_one },
-                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Radian, 57.29577951308233 },
-                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Gradian, rat_0_9 },
+                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Radian, rat_angle_radian },
+                                                   { ViewMode::Angle, UnitConverterUnits::Angle_Gradian, rat_angle_gradian },
 
                                                    { ViewMode::Pressure, UnitConverterUnits::Pressure_Atmosphere, rat_one },
                                                    { ViewMode::Pressure, UnitConverterUnits::Pressure_Bar, rat_pressure_bar },

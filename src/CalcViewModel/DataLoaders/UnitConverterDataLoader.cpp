@@ -808,7 +808,6 @@ PRAT rat_data_gigabit = nullptr;
 PRAT rat_data_kibibits = nullptr;
 PRAT rat_data_kibibytes = nullptr;
 PRAT rat_data_kilobit = nullptr;
-PRAT rat_data_kilobyte = nullptr;
 PRAT rat_data_mebibits = nullptr;
 PRAT rat_data_mebibytes = nullptr;
 PRAT rat_data_megabit = nullptr;
@@ -959,7 +958,7 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
 
                                                    { ViewMode::Data, UnitConverterUnits::Data_Bit, rat_data_bit },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Byte, rat_0_000001 },
-                                                   { ViewMode::Data, UnitConverterUnits::Data_Kilobyte, rat_data_kilobyte },
+                                                   { ViewMode::Data, UnitConverterUnits::Data_Kilobyte, rat_0_001 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Megabyte, rat_one },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Gigabyte, rat_1000 },
                                                    { ViewMode::Data, UnitConverterUnits::Data_Terabyte, rat_1000000 },

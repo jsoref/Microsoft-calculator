@@ -960,14 +960,14 @@ void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, uno
                                                    { ViewMode::Power, UnitConverterUnits::Power_Horse, rat_power_horse },
                                                    { ViewMode::Power, UnitConverterUnits::Power_TrainEngine, 2982799.486329081 },
 
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Day, 86400 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Day, rat_time_day },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Second, rat_one },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Week, 604800 },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Year, 31557600 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Week, rat_time_week },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Year, rat_time_year },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Millisecond, rat_0_001 },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Microsecond, rat_0_000001 },
                                                    { ViewMode::Time, UnitConverterUnits::Time_Minute, rat_60 },
-                                                   { ViewMode::Time, UnitConverterUnits::Time_Hour, 3600 },
+                                                   { ViewMode::Time, UnitConverterUnits::Time_Hour, rat_time_hour },
 
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_CupUS, rat_volume_cupus },
                                                    { ViewMode::Volume, UnitConverterUnits::Volume_PintUS, rat_volume_pintus },

@@ -48,8 +48,8 @@ namespace CalculatorApp
                 CalculatorApp::Common::ViewMode categoryId,
                 int parentUnitId,
                 int unitId,
-                double ratio,
-                double offset,
+                PRAT ratio,
+                PRAT offset,
                 bool offsetFirst = false)
                 : categoryId(categoryId)
                 , parentUnitId(parentUnitId)
@@ -80,7 +80,7 @@ namespace CalculatorApp
 
             void GetCategories(_In_ std::shared_ptr<std::vector<UnitConversionManager::Category>> categoriesList);
             void GetUnits(_In_ std::unordered_map<CalculatorApp::Common::ViewMode, std::vector<CalculatorApp::ViewModel::OrderedUnit>>& unitMap);
-            void GetConversionData(_In_ std::unordered_map<CalculatorApp::Common::ViewMode, std::unordered_map<int, double>>& categoryToUnitConversionMap);
+            void GetConversionData(_In_ std::unordered_map<CalculatorApp::Common::ViewMode, std::unordered_map<int, PRAT>>& categoryToUnitConversionMap);
             void
             GetExplicitConversionData(_In_ std::unordered_map<int, std::unordered_map<int, UnitConversionManager::ConversionData>>& unitToUnitConversionList);
 

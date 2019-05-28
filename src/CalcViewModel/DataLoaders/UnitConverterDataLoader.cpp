@@ -842,7 +842,6 @@ PRAT rat_length_nanometer = nullptr;
 PRAT rat_length_nauticalmile = nullptr;
 PRAT rat_length_paperclip = nullptr;
 PRAT rat_length_yard = nullptr;
-PRAT rat_one = nullptr;
 PRAT rat_power_britishthermalunitperminute = nullptr;
 PRAT rat_power_footpoundperminute = nullptr;
 PRAT rat_power_horse = nullptr;
@@ -1212,34 +1211,51 @@ wstring UnitConverterDataLoader::GetLocalizedStringName(String ^ stringId)
     return AppResourceProvider::GetInstance().GetResourceString(stringId)->Data();
 }
 
+PRAT rat_temperature_degreescelsius_farenheit = nullptr;
+PRAT rat_temperature_degreesfarenheit_celsius = nullptr;
+PRAT rat_temperature_offset_celsius_kelvin = nullptr;
+PRAT rat_temperature_offset_kelvin_celsius = nullptr;
+PRAT rat_temperature_offset_farenheit_celsius = nullptr;
+PRAT rat_temperature_offset_celsius_farenheit = nullptr;
+PRAT rat_temperature_offset_farenheit_kelvin = nullptr;
+PRAT rat_temperature_offset_kelvin_farenheit = nullptr;
 void UnitConverterDataLoader::GetExplicitConversionData(_In_ unordered_map<int, unordered_map<int, UCM::ConversionData>>& unitToUnitConversionList)
 {
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_temperature_degreescelsius_farenheit, 18, 10);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_temperature_degreesfarenheit_celsius, 10, 18);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_temperature_offset_celsius_kelvin, 27315, 100);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_temperature_offset_kelvin_celsius, -27315, 100);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_temperature_offset_farenheit_kelvin, 45967, 100);
+    INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat_temperature_offset_kelvin_farenheit, -45967, 100);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_temperature_offset_farenheit_celsius, -32);
+    INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_temperature_offset_celsius_farenheit, 32);
+
     /* categoryId, ParentUnitId, UnitId, ratio, offset, offsetfirst*/
     ExplicitUnitConversionData conversionDataList[] = {
-        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesCelsius, UnitConverterUnits::Temperature_DegreesCelsius, 1, 0 },
-        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesCelsius, UnitConverterUnits::Temperature_DegreesFahrenheit, 1.8, 32 },
-        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesCelsius, UnitConverterUnits::Temperature_Kelvin, 1, 273.15 },
+        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesCelsius, UnitConverterUnits::Temperature_DegreesCelsius, rat_one, rat_zero },
+        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesCelsius, UnitConverterUnits::Temperature_DegreesFahrenheit, rat_temperature_degreescelsius_farenheit, rat_temperature_offset_celsius_farenheit },
+        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesCelsius, UnitConverterUnits::Temperature_Kelvin, rat_one, rat_temperature_offset_celsius_kelvin },
         { ViewMode::Temperature,
           UnitConverterUnits::Temperature_DegreesFahrenheit,
           UnitConverterUnits::Temperature_DegreesCelsius,
-          0.55555555555555555555555555555556,
-          -32,
+          rat_temperature_degreesfarenheit_celsius,
+          rat_temperature_offset_farenheit_celsius,
           CONVERT_WITH_OFFSET_FIRST },
-        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesFahrenheit, UnitConverterUnits::Temperature_DegreesFahrenheit, 1, 0 },
+        { ViewMode::Temperature, UnitConverterUnits::Temperature_DegreesFahrenheit, UnitConverterUnits::Temperature_DegreesFahrenheit, rat_one, rat_zero },
         { ViewMode::Temperature,
           UnitConverterUnits::Temperature_DegreesFahrenheit,
           UnitConverterUnits::Temperature_Kelvin,
-          0.55555555555555555555555555555556,
-          459.67,
+          rat_temperature_degreesfarenheit_celsius,
+          rat_temperature_offset_farenheit_kelvin,
           CONVERT_WITH_OFFSET_FIRST },
         { ViewMode::Temperature,
           UnitConverterUnits::Temperature_Kelvin,
           UnitConverterUnits::Temperature_DegreesCelsius,
-          1,
-          -273.15,
+          rat_one,
+          rat_temperature_offset_kelvin_celsius,
           CONVERT_WITH_OFFSET_FIRST },
-        { ViewMode::Temperature, UnitConverterUnits::Temperature_Kelvin, UnitConverterUnits::Temperature_DegreesFahrenheit, 1.8, -459.67 },
-        { ViewMode::Temperature, UnitConverterUnits::Temperature_Kelvin, UnitConverterUnits::Temperature_Kelvin, 1, 0 }
+        { ViewMode::Temperature, UnitConverterUnits::Temperature_Kelvin, UnitConverterUnits::Temperature_DegreesFahrenheit, rat_temperature_degreescelsius_farenheit, rat_temperature_offset_kelvin_farenheit },
+        { ViewMode::Temperature, UnitConverterUnits::Temperature_Kelvin, UnitConverterUnits::Temperature_Kelvin, rat_one, rat_zero }
     };
 
     // Populate the hash map and return;

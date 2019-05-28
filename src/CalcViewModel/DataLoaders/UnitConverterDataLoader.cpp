@@ -896,8 +896,8 @@ INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat, num, div) \
     if (rat == nullptr)            \
     {                              \
         createrat(rat);            \
-        DUPNUM(rat_half->pp, num); \
-        DUPNUM(rat_half->pq, div); \
+        DUPNUM(rat->pp, num);      \
+        DUPNUM(rat->pq, div);      \
         DUMPRAWRAT(rat);           \
     }
 

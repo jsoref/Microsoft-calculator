@@ -66,7 +66,7 @@ void UnitConverterDataLoader::LoadData()
     unordered_map<int, OrderedUnit> idToUnit;
 
     unordered_map<ViewMode, vector<OrderedUnit>> orderedUnitMap{};
-    unordered_map<ViewMode, unordered_map<int, double>> categoryToUnitConversionDataMap{};
+    unordered_map<ViewMode, unordered_map<int, PRAT>> categoryToUnitConversionDataMap{};
     unordered_map<int, unordered_map<int, UCM::ConversionData>> explicitConversionData{};
 
     // Load categories, units and conversion data into data structures. This will be then used to populate hashmaps used by CalcEngine and UI layer
@@ -113,8 +113,8 @@ void UnitConverterDataLoader::LoadData()
             if (explicitConversionData.find(unit.id) == explicitConversionData.end())
             {
                 // Get the associated units for a category id
-                unordered_map<int, double> unitConversions = categoryToUnitConversionDataMap.at(categoryViewMode);
-                double unitFactor = unitConversions[unit.id];
+                unordered_map<int, PRAT> unitConversions = categoryToUnitConversionDataMap.at(categoryViewMode);
+                PRAT unitFactor = unitConversions[unit.id];
 
                 for (const auto& [id, conversionFactor] : unitConversions)
                 {
@@ -901,7 +901,7 @@ INIT_AND_DUMP_RAW_RAT_FRAQ_IF_NULL(rat, num, div) \
         DUMPRAWRAT(rat);           \
     }
 
-void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, unordered_map<int, double>>& categoryToUnitConversionMap)
+void UnitConverterDataLoader::GetConversionData(_In_ unordered_map<ViewMode, unordered_map<int, PRAT>>& categoryToUnitConversionMap)
 {
     INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_60, 60);
     INIT_AND_DUMP_RAW_RAT_IF_NULL(rat_100, 100);

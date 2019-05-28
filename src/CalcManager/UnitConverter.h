@@ -138,7 +138,7 @@ namespace UnitConversionManager
         ConversionData()
         {
         }
-        ConversionData(double ratio, double offset, bool offsetFirst)
+        ConversionData(PRAT ratio, PRAT offset, bool offsetFirst)
             : ratio(ratio)
             , offset(offset)
             , offsetFirst(offsetFirst)
@@ -149,8 +149,8 @@ namespace UnitConversionManager
         {
         }
 
-        double ratio;
-        double offset;
+        PRAT ratio;
+        PRAT offset;
         bool offsetFirst;
     };
 
@@ -276,7 +276,7 @@ namespace UnitConversionManager
 
     private:
         bool CheckLoad();
-        double Convert(double value, ConversionData conversionData);
+        PRAT Convert(PRAT value, ConversionData conversionData);
         std::vector<std::tuple<std::wstring, Unit>> CalculateSuggested();
         void ClearValues();
         void TrimString(std::wstring& input);

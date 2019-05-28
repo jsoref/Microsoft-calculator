@@ -572,15 +572,19 @@ shared_ptr<ICurrencyConverterDataLoader> UnitConverter::GetCurrencyConverterData
 /// </summary>
 /// <param name="value">double input value to convert</param>
 /// <param name="ratio">double conversion ratio to use</param>
-double UnitConverter::Convert(double value, ConversionData conversionData)
+PRAT UnitConverter::Convert(PRAT value, ConversionData conversionData)
 {
     if (conversionData.offsetFirst)
     {
-        return (value + conversionData.offset) * conversionData.ratio;
+        addnum(value, conversionData.offset, BASEX);
+        MULNUM(value, conversionData.ratio);
+        return value;
     }
     else
     {
-        return (value * conversionData.ratio) + conversionData.offset;
+        MULNUM(value, conversionData.ratio);
+        addnum(value, conversionData.offset, BASEX);
+        return value;
     }
 }
 
@@ -849,7 +853,7 @@ void UnitConverter::Calculate()
 
     unordered_map<Unit, ConversionData, UnitHash> conversionTable = m_ratioMap[m_fromType];
     double returnValue = stod(m_currentDisplay);
-    if (conversionTable[m_toType].ratio == 1.0 && conversionTable[m_toType].offset == 0.0)
+    if (conversionTable[m_toType].ratio == rat_one && conversionTable[m_toType].offset == rat_zero)
     {
         m_returnDisplay = m_currentDisplay;
         m_returnHasDecimal = m_currentHasDecimal;
